@@ -4,6 +4,6 @@ language: generic
 sudo: required
 install:
   - wget https://downloads.sourceforge.net/project/mozart-oz/v2.0.0-alpha.0/mozart2-2.0.0-alpha.0+build.4105.5c06ced-x86_64-linux.deb
-  - dpkg -i mozart2-2.0.0-alpha.0+build.4105.5c06ced-x86_64-linux.deb
+  - sudo dpkg -i mozart2-2.0.0-alpha.0+build.4105.5c06ced-x86_64-linux.deb
 script:
   - make run
