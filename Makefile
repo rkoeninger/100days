@@ -1,6 +1,13 @@
-run:
-	ozc -c hanoi.oz -o hanoi.oza
-	ozengine ./hanoi.oza
+bin-directory:
+ifeq ($(OS),Windows_NT)
+	[ -d bin ] || mkdir bin
+else
+	mkdir -p bin
+endif
+
+hanoi: bin-directory
+	ozc -c ./src/hanoi.oz -o ./bin/hanoi.ozf
+	ozengine ./bin/hanoi.ozf
 
 clean:
-	rm -rf *.ozf *.oza
+	rm -rf bin
