@@ -1,13 +1,17 @@
-bin-directory:
+bin:
 ifeq ($(OS),Windows_NT)
 	[ -d bin ] || mkdir bin
 else
 	mkdir -p bin
 endif
 
-hanoi: bin-directory
+hanoi: bin
 	ozc -c ./src/hanoi.oz -o ./bin/hanoi.ozf
 	ozengine ./bin/hanoi.ozf
+
+mcm: bin
+	ozc -c ./src/mcm.oz -o ./bin/mcm.ozf
+	ozengine ./bin/mcm.ozf
 
 clean:
 	rm -rf bin
