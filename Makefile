@@ -13,5 +13,9 @@ mcm: bin
 	ozc -c ./src/mcm.oz -o ./bin/mcm.ozf
 	ozengine ./bin/mcm.ozf
 
+permute: bin
+	ozc -c ./src/permute.oz -o ./bin/permute.ozf
+	ozengine ./bin/permute.ozf
+
 clean:
 	rm -rf bin
