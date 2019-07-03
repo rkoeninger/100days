@@ -1,4 +1,4 @@
-package count1bits_test
+package one_hundred_days
 
 import "testing"
 
@@ -11,7 +11,7 @@ func count1bits(value int) int {
 	return n
 }
 
-func Test(t *testing.T) {
+func Test004(t *testing.T) {
 	if 4 != count1bits(99) {
 		t.FailNow()
 	}

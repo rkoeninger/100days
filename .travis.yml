@@ -2,5 +2,5 @@ notifications:
   email: false
 language: go
 script:
-  - cd ./src/day004
-  - go test
+  - cd src
+  - go test -v

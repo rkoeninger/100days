@@ -1,6 +1,9 @@
-package main
+package one_hundred_days
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
 func hanoi_recur(height int, from string, to string, through string) []string {
 	if height > 0 {
@@ -24,7 +27,7 @@ func show(moves []string) {
 	fmt.Println()
 }
 
-func main() {
+func Test001(t *testing.T) {
 	show(hanoi(1))
 	show(hanoi(2))
 	show(hanoi(3))
