@@ -1,11 +1,8 @@
 package one_hundred_days
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
-func hanoi_recur(height int, from string, to string, through string) []string {
+func hanoi_recur(height int, from, to, through string) []string {
 	if height > 0 {
 		return append(
 			hanoi_recur(height-1, from, through, to),
@@ -20,16 +17,63 @@ func hanoi(height int) []string {
 	return hanoi_recur(height, "left", "right", "center")
 }
 
-func show(moves []string) {
-	for i := 0; i < len(moves); i++ {
-		fmt.Println(moves[i])
+func array_equal(xs, ys []string) bool {
+	if xs == nil || ys == nil {
+		return xs == nil && ys == nil
 	}
-	fmt.Println()
+	if len(xs) != len(ys) {
+		return false
+	}
+	for i := range xs {
+		if xs[i] != ys[i] {
+			return false
+		}
+	}
+	return true
+}
+
+func test_hanoi(t *testing.T, height int, expected []string) {
+	if !array_equal(expected, hanoi(height)) {
+		t.FailNow()
+	}
 }
 
 func Test001(t *testing.T) {
-	show(hanoi(1))
-	show(hanoi(2))
-	show(hanoi(3))
-	show(hanoi(4))
+	test_hanoi(t, 1, []string{
+		"left => right",
+	})
+
+	test_hanoi(t, 2, []string{
+		"left => center",
+		"left => right",
+		"center => right",
+	})
+
+	test_hanoi(t, 3, []string{
+		"left => right",
+		"left => center",
+		"right => center",
+		"left => right",
+		"center => left",
+		"center => right",
+		"left => right",
+	})
+
+	test_hanoi(t, 4, []string{
+		"left => center",
+		"left => right",
+		"center => right",
+		"left => center",
+		"right => left",
+		"right => center",
+		"left => center",
+		"left => right",
+		"center => right",
+		"center => left",
+		"right => left",
+		"center => right",
+		"left => center",
+		"left => right",
+		"center => right",
+	})
 }
