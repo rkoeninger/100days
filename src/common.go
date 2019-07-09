@@ -1,6 +1,11 @@
 package onehundreddays
 
 import "fmt"
+import "strconv"
+
+func itoa(n int) string {
+	return strconv.Itoa(n)
+}
 
 func equateArrays(xs, ys []string) bool {
 	if xs == nil || ys == nil {
@@ -37,4 +42,22 @@ func stringToUnitStrings(s string) []string {
 	}
 
 	return a
+}
+
+func fill(xs []int, x int) []int {
+	for i := range xs {
+		xs[i] = x
+	}
+
+	return xs
+}
+
+func sum(xs []int) int {
+	total := 0
+
+	for _, x := range xs {
+		total += x
+	}
+
+	return total
 }

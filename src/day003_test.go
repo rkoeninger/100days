@@ -1,6 +1,5 @@
 package onehundreddays
 
-import "strconv"
 import "testing"
 
 func findPivot(a []string) int {
@@ -38,7 +37,7 @@ func testPermutation(t *testing.T, input, expected string) {
 	actualArray := nextPermutation(inputArray)
 	if !equateArrays(actualArray, expectedArray) {
 		t.Errorf("permutation " + showArray(actualArray) + " is not the expected " + showArray(expectedArray))
-		t.Errorf("    with pivot i = " + strconv.Itoa(findPivot(inputArray)))
+		t.Errorf("    with pivot i = " + itoa(findPivot(inputArray)))
 	}
 }
 

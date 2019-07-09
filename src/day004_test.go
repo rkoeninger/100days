@@ -1,6 +1,5 @@
 package onehundreddays
 
-import "strconv"
 import "testing"
 
 func countOneBits(value int) int {
@@ -16,7 +15,7 @@ func countOneBits(value int) int {
 
 func testCountOneBits(t *testing.T, value, count int) {
 	if count != countOneBits(value) {
-		t.Errorf(strconv.Itoa(value) + " does not have " + strconv.Itoa(count) + " 1-bits")
+		t.Errorf(itoa(value) + " does not have " + itoa(count) + " 1-bits")
 	}
 }
 
