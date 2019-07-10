@@ -11,14 +11,17 @@ func equateArrays(xs, ys []string) bool {
 	if xs == nil || ys == nil {
 		return xs == nil && ys == nil
 	}
+
 	if len(xs) != len(ys) {
 		return false
 	}
+
 	for i := range xs {
 		if xs[i] != ys[i] {
 			return false
 		}
 	}
+
 	return true
 }
 
@@ -39,6 +42,16 @@ func stringToUnitStrings(s string) []string {
 
 	for i, r := range s {
 		a[i] = string(r)
+	}
+
+	return a
+}
+
+func to(start int, end int) []int {
+	a := make([]int, end-start)
+
+	for i := start; i < end; i++ {
+		a[i-start] = i
 	}
 
 	return a
