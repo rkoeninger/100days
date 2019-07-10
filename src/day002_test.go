@@ -14,7 +14,7 @@ func multiplications(chain []mat) mat {
 	aux := make([][]mat, n)
 
 	for _, i := range to(0, n) {
-		aux[i] = make([]mat, n)
+		aux[i] = make([]mat, i+1)
 		aux[i][i] = chain[i]
 	}
 
@@ -29,20 +29,20 @@ func multiplications(chain []mat) mat {
 			for _, k := range to(j, j+i) {
 
 				// multiply subchains at splitting point
-				l := aux[j][k]
-				r := aux[k+1][j+i]
+				l := aux[k][j]
+				r := aux[j+i][k+1]
 				cost := l.cost + r.cost + l.rows*l.cols*r.cols
 				order := "(" + l.order + r.order + ")"
 
 				if cost < best {
 					best = cost
-					aux[j][j+i] = mat{cost, order, l.rows, r.cols}
+					aux[j+i][j] = mat{cost, order, l.rows, r.cols}
 				}
 			}
 		}
 	}
 
-	return aux[0][n-1]
+	return aux[n-1][0]
 }
 
 func testChain(t *testing.T, expected mat, chain []mat) {
