@@ -1,5 +1,6 @@
 package onehundreddays
 
+import "math"
 import "testing"
 
 type mat struct {
@@ -23,7 +24,7 @@ func multiplications(chain []mat) mat {
 
 		// starting index of subchain
 		for _, j := range to(0, n-i) {
-			best := 999999999
+			best := math.MaxInt32
 
 			// splitting point of subchain
 			for _, k := range to(j, j+i) {
