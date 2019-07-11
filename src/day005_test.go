@@ -1,5 +1,6 @@
 package onehundreddays
 
+import "math"
 import "testing"
 
 func eratosthenes(n int) int {
@@ -7,7 +8,7 @@ func eratosthenes(n int) int {
 	i, j := 1, 3
 	p := fill(make([]int, n), 1)
 
-	for i < n {
+	for j < int(math.Ceil(math.Sqrt(float64(2 * n)))) {
 		if p[i] > 0 {
 			for k := j * j >> 1; k < n; k += j {
 				p[k] = 0
